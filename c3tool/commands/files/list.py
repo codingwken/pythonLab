@@ -9,8 +9,8 @@ COMMAND_SPEC = CommandSpec("ls", "<filepath, default current>", "Lists a directo
 class ListCommand(BaseCommand):
     def run(self, args, context: ToolContext) -> str:
         # TODO: List either the supplied directory or ``context.cwd``.
-        self.require_count(args, 0, "implementation complete")
-        target = expand_path(args[0] if args else context.cwd)
+        self.require_count(args, 0 or 1, "implementation complete")
+        target = expand_path(args[0] if args else context.cwd])
         if not target.is_dir():
             raise CommandError(f"{target} is not a valid directory.")
         entries = sorted(target.iterdir())
