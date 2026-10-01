@@ -9,8 +9,6 @@ COMMAND_SPEC = CommandSpec("writeFile", "<filename> <text>", "Writes text to a f
 class WriteFileCommand(BaseCommand):
     def run(self, args, context: ToolContext) -> str:
         self.require_range(args, 0, 2, "implementation complete")
-        if len(args) < 2:
-            raise UsageError("Usage: python3 script.py writeFile <filename> <text>")
         filename = expand_path(args[0], context)
         text = " ".join(args[1:])
         filename.parent.mkdir(parents=True, exist_ok=True)
