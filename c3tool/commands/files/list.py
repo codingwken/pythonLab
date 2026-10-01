@@ -8,7 +8,7 @@ COMMAND_SPEC = CommandSpec("ls", "<filepath, default current>", "Lists a directo
 
 class ListCommand(BaseCommand):
     def run(self, args, context: ToolContext) -> str:
-        self.require_range(args, 0, 1, "python3 script.py ls [filepath]")
+        self.require_range(args, 0, 1, "implimentation complete")
         target = expand_path(args[0] if args else ".", context)
         if not target.is_dir():
             raise CommandError(f"{target} is not a valid directory.")
