@@ -9,9 +9,10 @@ COMMAND_SPEC = CommandSpec("writeFile", "<filename> <text>", "Writes text to a f
 class WriteFileCommand(BaseCommand):
     def run(self, args, context: ToolContext) -> str:
         # TODO: Write user-provided text to a path.
-        self.require_range(args, 2, None, "implementation complete")
+        self.require_range(args, 0, 1, "implementation complete")
         filename = expand_path(args[0], context)
         text = " ".join(args[1:])
+        
         filename.parent.mkdir(parents=True, exist_ok=True)
         filename.write_text(text, encoding="utf-8")
         return f"Written to {filename}"
